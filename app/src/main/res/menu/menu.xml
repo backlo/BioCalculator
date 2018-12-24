@@ -1,0 +1,21 @@
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".MainActivity">
+
+    <item android:id="@+id/action_search"
+        android:title="Search"
+        android:icon="@drawable/ic_search_black_24dp"
+        app:showAsAction="always" />
+
+    <item android:id="@+id/action_logout"
+        android:title="로그아웃"
+        app:showAsAction="never"/>
+    <item android:id="@+id/action_share"
+        android:title="앱 공유"
+        app:showAsAction="never"/>
+    <item android:id="@+id/action_about"
+        android:title="about"
+        app:showAsAction="never"/>
+
+</menu>
