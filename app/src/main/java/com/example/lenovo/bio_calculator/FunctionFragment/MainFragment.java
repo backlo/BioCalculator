@@ -1,5 +1,7 @@
 package com.example.lenovo.bio_calculator.FunctionFragment;
 
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -34,9 +36,7 @@ public class MainFragment extends Fragment {
     @BindView(R.id.q_and_a)
     LinearLayout q_and_a;
 
-
-    public MainFragment() {
-    }
+    public MainFragment() { }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
