@@ -3,4 +3,10 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="kakao_app_key">a58539d12de9e4c603d4138aca5ff92a</string>
+    <string name="facebook_app_id">783845551957893</string>
+    <string name="fb_login_protocol_scheme">fb783845551957893</string>
+
+
+
 </resources>
