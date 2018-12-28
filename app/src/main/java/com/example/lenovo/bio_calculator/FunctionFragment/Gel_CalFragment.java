@@ -18,7 +18,10 @@ public class Gel_CalFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_gel_cal, container, false);
+        View view = inflater.inflate(R.layout.fragment_gel_cal , container, false);
+
+
+        return view;
     }
 
 }

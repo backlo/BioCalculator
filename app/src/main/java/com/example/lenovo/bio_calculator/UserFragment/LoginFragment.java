@@ -12,7 +12,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.lenovo.bio_calculator.FunctionFragment.MainFragment;
@@ -21,11 +20,9 @@ import com.example.lenovo.bio_calculator.Util.KakaoSessionCallback;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
-import com.facebook.FacebookSdk;
 import com.facebook.GraphRequest;
 import com.facebook.GraphResponse;
 import com.facebook.Profile;
-import com.facebook.appevents.AppEventsLogger;
 import com.facebook.login.LoginResult;
 import com.kakao.auth.Session;
 import com.kakao.network.ErrorResult;
@@ -51,8 +48,6 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
     private static String CLIENT_SECRET = "OPBpR_0C0P";
     private static String CLIENT_NAME = "네이버 아이디로 로그인 테스트";
 
-    @BindView(R.id.login_info)
-    TextView login_info;
     @BindView(R.id.kakao_loginbtn)
     LoginButton kakao_loginbtn;
     @BindView(R.id.naver_loginbtn)
@@ -94,17 +89,13 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
         init_View();
 
         //facebook
-        FacebookSdk.sdkInitialize(getActivity());
-        AppEventsLogger.activateApp(getActivity());
-
-        facebook_loginbtn.setReadPermissions(Arrays.asList("public_profile", "email"));
+        facebook_loginbtn.setReadPermissions(Arrays.asList("public_profile","email"));
         facebook_loginbtn.registerCallback(mCallbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
                 GraphRequest graphRequest = GraphRequest.newMeRequest(loginResult.getAccessToken(), new GraphRequest.GraphJSONObjectCallback() {
                     @Override
                     public void onCompleted(JSONObject object, GraphResponse response) {
-                        Log.e("facebook2", "");
                     }
                 });
                 Log.e("facebook2", "" + loginResult.toString());
@@ -122,6 +113,12 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
             @Override
             public void onError(FacebookException error) {
                 Log.e("facebook2", "onError called" + error.toString());
+            }
+        });
+        facebook_loginbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
             }
         });
 
@@ -260,7 +257,6 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
     public interface KakaoUserInfoListener {
         void userNickname(String userNickname);
     }
-
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {

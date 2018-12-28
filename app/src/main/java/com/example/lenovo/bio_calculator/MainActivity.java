@@ -1,10 +1,8 @@
 package com.example.lenovo.bio_calculator;
 
-import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -21,7 +19,6 @@ import android.widget.Toast;
 import com.example.lenovo.bio_calculator.FunctionFragment.MainFragment;
 import com.example.lenovo.bio_calculator.UserFragment.LoginFragment;
 import com.example.lenovo.bio_calculator.UserFragment.SignFragment;
-import com.facebook.CallbackManager;
 import com.kakao.auth.Session;
 import com.kakao.network.ErrorResult;
 import com.kakao.usermgmt.UserManagement;
@@ -155,17 +152,5 @@ public class MainActivity extends AppCompatActivity implements LoginFragment.Kak
         Log.d("kakao listener",""+userNickname);
         usernickName = userNickname;
         login_userinfo.setText(usernickName + "님 환영합니다.");
-    }
-
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        CallbackManager mCallbackManager = new CallbackManager() {
-            @Override
-            public boolean onActivityResult(int requestCode, int resultCode, Intent data) {
-
-                return false;
-            }
-        };
     }
 }
