@@ -94,9 +94,9 @@ public class PCR_FoldFragment extends Fragment {
     @OnClick(R.id.cal_btn)
     public void getResult(){
 
-        if(edit_A.getText() != null && edit_B.getText() != null && edit_C.getText() != null && edit_D.getText() != null
-                && edit_E.getText() != null && edit_F.getText() != null && edit_G.getText() != null && edit_H.getText() !=null
-                && edit_I.getText() != null && edit_J.getText() != null && edit_K.getText() !=null && edit_L.getText() != null){
+        if(edit_A.getText().toString().length() != 0 && edit_B.getText().toString().length() != 0 && edit_C.getText().toString().length() != 0 && edit_D.getText().toString().length() != 0
+                && edit_E.getText().toString().length() != 0 && edit_F.getText().toString().length() != 0 && edit_G.getText().toString().length() != 0 && edit_H.getText().toString().length() != 0
+                && edit_I.getText().toString().length() != 0 && edit_J.getText().toString().length() != 0 && edit_K.getText().toString().length() != 0 && edit_L.getText().toString().length() != 0){
 
             getedit_a = Double.parseDouble(edit_A.getText().toString());
             getedit_b = Double.parseDouble(edit_B.getText().toString());
