@@ -5,19 +5,24 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
+import android.widget.Button;
 
 import com.example.lenovo.bio_calculator.MainActivity;
 import com.example.lenovo.bio_calculator.R;
 
-/**
- * A simple {@link Fragment} subclass.
- */
-public class MakeFragment extends Fragment {
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
+public class MakeFragment extends Fragment{
+
+    @BindView(R.id.make_first_btn)
+    Button first_btn;
 
     public MakeFragment() {    }
 
@@ -27,11 +32,24 @@ public class MakeFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_make, container, false);
 
-        ActionBar actionBar = ((MainActivity)getActivity()).getSupportActionBar();
-        actionBar.setBackgroundDrawable(new ColorDrawable(Color.rgb(47,85,151)));
+        ButterKnife.bind(this, view);
+
+        ActionBar actionBar = ((MainActivity) getActivity()).getSupportActionBar();
+        actionBar.setBackgroundDrawable(new ColorDrawable(Color.rgb(47, 85, 151)));
+
+        first_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                replaceFragment(new MakeFirstBtnFragment());
+            }
+        });
 
         return view;
     }
 
-
+    private void replaceFragment(Fragment fragment){
+        FragmentManager fragmentManager = getFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.main_fragment, fragment).addToBackStack(null).commit();
+    }
 }

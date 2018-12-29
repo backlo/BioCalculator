@@ -10,9 +10,9 @@
     <LinearLayout
         android:id="@+id/main_tab"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="5"
+        android:layout_height="50dp"
         android:background="@color/colorTab"
+        android:orientation="horizontal"
         android:padding="10dp">
 
         <Button
@@ -22,7 +22,6 @@
             android:background="#00ff0000"
             android:text="회원가입"
             android:textColor="@color/white" />
-
         <Button
             android:id="@+id/login"
             android:layout_width="wrap_content"
@@ -32,13 +31,9 @@
             android:textColor="@color/white" />
 
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="#00ff0000"
-            android:id="@+id/login_userinfo"
-            android:text=""
-            android:textColor="#ffffff"/>
-
+            android:id="@+id/login_userinfo"/>
     </LinearLayout>
 
     <FrameLayout

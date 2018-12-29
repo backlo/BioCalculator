@@ -1,8 +1,10 @@
 package com.example.lenovo.bio_calculator;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -19,6 +21,7 @@ import android.widget.Toast;
 import com.example.lenovo.bio_calculator.FunctionFragment.MainFragment;
 import com.example.lenovo.bio_calculator.UserFragment.LoginFragment;
 import com.example.lenovo.bio_calculator.UserFragment.SignFragment;
+import com.facebook.CallbackManager;
 import com.kakao.auth.Session;
 import com.kakao.network.ErrorResult;
 import com.kakao.usermgmt.UserManagement;
@@ -29,7 +32,7 @@ import com.kakao.usermgmt.response.model.UserProfile;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity implements LoginFragment.KakaoUserInfoListener{
+public class MainActivity extends AppCompatActivity implements LoginFragment.KakaoUserInfoListener {
 
     Button login, loginSign;
     @BindView(R.id.login_userinfo)
@@ -50,30 +53,26 @@ public class MainActivity extends AppCompatActivity implements LoginFragment.Kak
         getSupportFragmentManager().beginTransaction().add(R.id.main_fragment, new MainFragment()).commit();
         kakaoLoginChecker();
 
-        login = (Button)findViewById(R.id.login);
-        login.setOnClickListener(new View.OnClickListener(){
+        login = (Button) findViewById(R.id.login);
+        login.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
-               replaceFragment(new LoginFragment());
+                replaceFragment(new LoginFragment());
             }
         });
-
-        loginSign = (Button)findViewById(R.id.login_sign);
-        loginSign.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                replaceFragment(new SignFragment());
-            }
-        });
-
     }
 
     private void replaceFragment(Fragment fragment){
         FragmentManager fragmentManager = getSupportFragmentManager();
-        if(fragment != null)
-            fragmentManager.popBackStack();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.main_fragment, fragment).addToBackStack(null).commit();
+    }
+
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
     }
 
     @Override
@@ -90,11 +89,11 @@ public class MainActivity extends AppCompatActivity implements LoginFragment.Kak
             return true;
         }
         if (id == R.id.action_logout) {
-            if(Session.getCurrentSession().isOpened()){
+            if (Session.getCurrentSession().isOpened()) {
                 Session.getCurrentSession().close();
                 kakaoLogout();
                 Toast.makeText(this, "로그아웃 되었습니다.", Toast.LENGTH_SHORT).show();
-            }else{
+            } else {
                 Toast.makeText(this, "로그인 먼저 해주세요!", Toast.LENGTH_SHORT).show();
             }
             return true;
@@ -111,14 +110,7 @@ public class MainActivity extends AppCompatActivity implements LoginFragment.Kak
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setBackgroundDrawable(new ColorDrawable(Color.rgb(237,125,49)));
-    }
-
-    public void kakaoLogout(){
+    public void kakaoLogout() {
         UserManagement.requestLogout(new LogoutResponseCallback() {
             @Override
             public void onCompleteLogout() {
@@ -127,30 +119,45 @@ public class MainActivity extends AppCompatActivity implements LoginFragment.Kak
         });
     }
 
-    public void kakaoLoginChecker(){
-        if(Session.getCurrentSession().isOpened()){
-            Log.e("kakao","로그인되어잇음");
+    public void kakaoLoginChecker() {
+        if (Session.getCurrentSession().isOpened()) {
+            Log.e("kakao", "로그인되어잇음");
             UserManagement.requestMe(new MeResponseCallback() {
                 @Override
                 public void onSessionClosed(ErrorResult errorResult) {
                 }
+
                 @Override
                 public void onNotSignedUp() {
                 }
+
                 @Override
                 public void onSuccess(UserProfile result) {
-                    login_userinfo.setText(result.getNickname()+ "님 환영합니다.");
+                    login_userinfo.setText(result.getNickname() + "님 환영합니다.");
                 }
             });
-        }else{
+        } else {
             login_userinfo.setText("");
         }
     }
 
     @Override
     public void userNickname(String userNickname) {
-        Log.d("kakao listener",""+userNickname);
+        Log.d("kakao listener", "" + userNickname);
         usernickName = userNickname;
         login_userinfo.setText(usernickName + "님 환영합니다.");
     }
+
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        CallbackManager mCallbackManager = new CallbackManager() {
+            @Override
+            public boolean onActivityResult(int requestCode, int resultCode, Intent data) {
+                return false;
+            }
+        };
+    }
+
+
 }

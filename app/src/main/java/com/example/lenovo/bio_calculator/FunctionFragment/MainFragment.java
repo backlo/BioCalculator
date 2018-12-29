@@ -6,12 +6,14 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.ActionBar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
+import com.example.lenovo.bio_calculator.MainActivity;
 import com.example.lenovo.bio_calculator.R;
 
 import butterknife.BindView;
@@ -86,6 +88,7 @@ public class MainFragment extends Fragment {
             }
         });
 
+
         return view;
     }
 
@@ -95,5 +98,14 @@ public class MainFragment extends Fragment {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.main_fragment, fragment).addToBackStack(null).commit();
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        ActionBar actionBar = ((MainActivity) getActivity()).getSupportActionBar();
+        actionBar.setBackgroundDrawable(new ColorDrawable(Color.rgb(237,125,49)));
+    }
+
+
 
 }

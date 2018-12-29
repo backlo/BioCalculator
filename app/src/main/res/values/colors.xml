@@ -8,5 +8,12 @@
     <color name="white">#FFFFFF</color>
     <color name="gridBackdground">#FCFCFC</color>
     <color name="colorTitleBar">#ed7d31</color>
+    <color name="colorFunctionTab">#b4c7e7</color>
+    <color name="colorMakeButton">#9dc3e6</color>
+    <color name="colorFunctionBackground">#e7e6e6</color>
+    <color name="colorMakeText">#2f5592</color>
+    <color name="colorMwNumberBtn">#385723</color>
+    <color name="colorMwAtomBtn">#2f5597</color>
+    <color name="colorMwCalBtn">#fff2cc</color>
 
 </resources>
