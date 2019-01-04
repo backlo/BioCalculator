@@ -2,13 +2,12 @@ package com.example.lenovo.bio_calculator;
 
 import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
@@ -34,7 +33,10 @@ import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity implements LoginFragment.KakaoUserInfoListener {
 
-    Button login, loginSign;
+    @BindView(R.id.login)
+    Button login;
+    @BindView(R.id.login_sign)
+    Button loginSign;
     @BindView(R.id.login_userinfo)
     TextView login_userinfo;
 
@@ -48,17 +50,26 @@ public class MainActivity extends AppCompatActivity implements LoginFragment.Kak
 
         View view = getWindow().getDecorView();
         view.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
-        getWindow().setStatusBarColor(Color.parseColor("#f2f2f2"));
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().setStatusBarColor(Color.parseColor("#f2f2f2"));
+        }
 
         getSupportFragmentManager().beginTransaction().add(R.id.main_fragment, new MainFragment()).commit();
         kakaoLoginChecker();
 
-        login = (Button) findViewById(R.id.login);
         login.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 replaceFragment(new LoginFragment());
+            }
+        });
+        loginSign.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                replaceFragment(new SignFragment());
             }
         });
     }

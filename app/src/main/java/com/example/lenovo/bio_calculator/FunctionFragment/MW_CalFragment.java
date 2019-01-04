@@ -1,8 +1,11 @@
 package com.example.lenovo.bio_calculator.FunctionFragment;
 
 
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.ActionBar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +14,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.lenovo.bio_calculator.MainActivity;
 import com.example.lenovo.bio_calculator.R;
 
 import java.util.ArrayDeque;
@@ -150,6 +154,9 @@ public class MW_CalFragment extends Fragment implements Button.OnClickListener {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_mw__cal, container, false);
         ButterKnife.bind(this, view);
+
+        ActionBar actionBar = ((MainActivity) getActivity()).getSupportActionBar();
+        actionBar.setBackgroundDrawable(new ColorDrawable(Color.rgb(47, 85, 151)));
 
         mw_del_btn.setOnClickListener(this);
         mw_delall_btn.setOnClickListener(this);
@@ -291,6 +298,7 @@ public class MW_CalFragment extends Fragment implements Button.OnClickListener {
                 text_molecular.setText(String.format("%.4f", calSik(sik_cal)));
                 break;
             case R.id.mw_copy:
+                Toast.makeText(getContext(), "값 복사", Toast.LENGTH_SHORT).show();
                 break;
 
             case R.id.mw_0:

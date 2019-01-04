@@ -1,4 +1,4 @@
-package com.example.lenovo.bio_calculator.FunctionFragment;
+package com.example.lenovo.bio_calculator.FunctionFragment.MakeTabFragment;
 
 
 import android.graphics.Color;

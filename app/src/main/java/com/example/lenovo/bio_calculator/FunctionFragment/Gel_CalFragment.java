@@ -1,7 +1,10 @@
 package com.example.lenovo.bio_calculator.FunctionFragment;
 
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.ActionBar;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -12,6 +15,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.lenovo.bio_calculator.MainActivity;
 import com.example.lenovo.bio_calculator.R;
 
 import butterknife.BindView;
@@ -78,6 +82,8 @@ public class Gel_CalFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_gel_cal, container, false);
         ButterKnife.bind(this, view);
 
+        ActionBar actionBar = ((MainActivity) getActivity()).getSupportActionBar();
+        actionBar.setBackgroundDrawable(new ColorDrawable(Color.rgb(47, 85, 151)));
 
         edit_b.addTextChangedListener(new TextWatcher() {
             @Override
