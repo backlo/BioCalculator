@@ -10,56 +10,33 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
+            android:layout_gravity="center"
+            android:gravity="center"
             android:orientation="vertical">
 
             <com.kakao.usermgmt.LoginButton
                 android:id="@+id/kakao_loginbtn"
-                android:layout_width="match_parent"
+                android:layout_width="357dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_margin="10dp" />
 
             <com.nhn.android.naverlogin.ui.view.OAuthLoginButton
                 android:id="@+id/naver_loginbtn"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:layout_gravity="center_vertical"/>
-
+                android:layout_width="350dp"
+                android:layout_height="50dp"
+                android:layout_margin="10dp" />
 
             <com.facebook.login.widget.LoginButton
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:id="@+id/facebook_loginbtn"/>
+                android:id="@+id/facebook_loginbtn"
+                android:layout_width="351dp"
+                android:layout_height="113dp"
+                android:layout_margin="10dp" />
 
         </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.2">
-
-            <Button
-                android:id="@+id/naver_getapi"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="naver api" />
-
-            <Button
-                android:id="@+id/naver_logout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="logout" />
-
-        </LinearLayout>
-
-
-
     </LinearLayout>
 </FrameLayout>

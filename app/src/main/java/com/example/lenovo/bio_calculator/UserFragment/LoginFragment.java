@@ -11,7 +11,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.lenovo.bio_calculator.FunctionFragment.MainFragment;
@@ -52,14 +51,10 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
     LoginButton kakao_loginbtn;
     @BindView(R.id.naver_loginbtn)
     OAuthLoginButton naver_loginbtn;
-
-    @BindView(R.id.naver_getapi)
-    Button naver_getapi;
-    @BindView(R.id.naver_logout)
-    Button naver_logout;
-
     @BindView(R.id.facebook_loginbtn)
     com.facebook.login.widget.LoginButton facebook_loginbtn;
+
+
 
     //SessionCallback sessionCallback;
     KakaoSessionCallback sessionCallback;
@@ -195,19 +190,15 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
         };
 
         naver_loginbtn.setOAuthLoginHandler(naverLoginHandler);
-        naver_getapi.setOnClickListener(this);
-        naver_logout.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
-        if (v.getId() == R.id.naver_getapi) {
-            new RequestApiTask().execute();
-        }
-        if (v.getId() == R.id.naver_logout) {
-            naverLoginInstance.logout(mContext);
-            naverLoginInstance.refreshAccessToken(mContext);
-        }
+
+//        if (v.getId() == R.id.naver_logout) {
+//            naverLoginInstance.logout(mContext);
+//            naverLoginInstance.refreshAccessToken(mContext);
+//        }
     }
 
 
