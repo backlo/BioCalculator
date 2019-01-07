@@ -26,12 +26,12 @@
 
 
         <TextView
+            android:id="@+id/make_firstbtn_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/colorFunctionBackground"
             android:gravity="center"
             android:padding="5dp"
-            android:text="물농도(M) 용액 제조하기"
             android:textSize="20dp" />
 
         <View
@@ -52,14 +52,16 @@
             android:orientation="horizontal">
 
             <TextView
+                android:id="@+id/make_firstbtn_weight"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:gravity="center"
-                android:text="시약의 분자량" />
+                android:gravity="center"/>
 
             <EditText
                 android:id="@+id/make_first_a"
+                android:inputType="number"
+                android:maxLength="5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1.5"
@@ -80,14 +82,16 @@
             android:orientation="horizontal">
 
             <TextView
+                android:id="@+id/make_firstbtn_concen"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:gravity="center"
-                android:text="원하는 물농도" />
+                android:gravity="center"/>
 
             <EditText
                 android:id="@+id/make_first_b"
+                android:inputType="number"
+                android:maxLength="5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1.5"
@@ -112,14 +116,16 @@
             android:orientation="horizontal">
 
             <TextView
+                android:id="@+id/make_firstbtn_volume"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:gravity="center"
-                android:text="원하는 볼륨" />
+                android:gravity="center"/>
 
             <EditText
                 android:id="@+id/make_first_c"
+                android:inputType="number"
+                android:maxLength="5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1.5"
@@ -157,15 +163,13 @@
                 android:id="@+id/make_first_delete"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1.5"
-                android:text="모두삭제" />
+                android:layout_weight="1.5"/>
 
             <Button
                 android:id="@+id/make_first_cal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="계산하기" />
+                android:layout_weight="1"/>
         </LinearLayout>
 
         <LinearLayout
@@ -178,11 +182,11 @@
             android:paddingBottom="20dp">
 
             <TextView
+                android:id="@+id/make_firstbtn_amount"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:gravity="center"
-                android:text="필요한 시약 량" />
+                android:gravity="center"/>
 
             <TextView
                 android:id="@+id/make_first_d"
@@ -224,9 +228,9 @@
             android:visibility="gone">
 
             <TextView
+                android:id="@+id/make_firstbtn_sol"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="해설)" />
+                android:layout_height="wrap_content"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -237,13 +241,12 @@
                     android:id="@+id/sol_d"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="D   g"
                     android:textColor="#ff0000" />
 
                 <TextView
+                    android:id="@+id/make_firstbtn_sol_D"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text=" 의 시약을 증류수를 이용하여 최종 볼륨이"
                     android:textColor="@color/colorMakeText" />
             </LinearLayout>
 
@@ -256,13 +259,12 @@
                     android:id="@+id/sol_c"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="C   ml"
                     android:textColor="#ff0000" />
 
                 <TextView
+                    android:id="@+id/make_firstbtn_sol_C"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text=" 가 되도록 녹이면"
                     android:textColor="@color/colorMakeText" />
             </LinearLayout>
 
@@ -275,13 +277,12 @@
                     android:id="@+id/sol_b"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="B   mM"
                     android:textColor="#ff0000" />
 
                 <TextView
+                    android:id="@+id/make_firstbtn_sol_B"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text=" 용액이 제조된다."
                     android:textColor="@color/colorMakeText" />
             </LinearLayout>
 

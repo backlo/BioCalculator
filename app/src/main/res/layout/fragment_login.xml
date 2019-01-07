@@ -21,24 +21,27 @@
             android:orientation="vertical">
 
             <EditText
+                android:id="@+id/login_edittext"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                android:hint="로그인" />
+                android:maxLines="1"/>
 
             <EditText
+                android:id="@+id/pass_edittext"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                android:hint="비밀번호" />
+                android:singleLine="true"
+                android:inputType="textPassword"/>
 
             <Button
+                android:id="@+id/login_btn"
                 android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:text="로그인" />
+                android:layout_height="wrap_content" />
 
             <Button
+                android:id="@+id/find_login_btn"
                 android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:text="아이디 찾기 / 비밀번호찾기" />
+                android:layout_height="wrap_content"/>
 
 
         </LinearLayout>

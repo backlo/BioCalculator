@@ -1,6 +1,8 @@
 package com.example.lenovo.bio_calculator.FunctionFragment.MakeTabFragment;
 
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -53,9 +55,28 @@ public class MakeFirstBtnFragment extends Fragment {
     @BindView(R.id.sol_show)
     LinearLayout sol_show;
 
+    @BindView(R.id.make_firstbtn_title)
+    TextView make_firstbtn_title;
+    @BindView(R.id.make_firstbtn_weight)
+    TextView make_firstbtn_weight;
+    @BindView(R.id.make_firstbtn_concen)
+    TextView make_firstbtn_concen;
+    @BindView(R.id.make_firstbtn_volume)
+    TextView make_firstbtn_volume;
+    @BindView(R.id.make_firstbtn_amount)
+    TextView make_firstbtn_amount;
+    @BindView(R.id.make_firstbtn_sol_D)
+    TextView make_firstbtn_sol_D;
+    @BindView(R.id.make_firstbtn_sol_C)
+    TextView make_firstbtn_sol_C;
+    @BindView(R.id.make_firstbtn_sol_B)
+    TextView make_firstbtn_sol_B;
+    @BindView(R.id.make_firstbtn_sol)
+    TextView make_firstbtn_sol;
+
     static String w_unit, v_unit, c_unit;
     double a,b,c,d;
-
+    SharedPreferences pref;
 
     public MakeFirstBtnFragment() { }
 
@@ -67,6 +88,23 @@ public class MakeFirstBtnFragment extends Fragment {
 
         ActionBar actionBar = ((MainActivity)getActivity()).getSupportActionBar();
         actionBar.setBackgroundDrawable(new ColorDrawable(Color.rgb(47,85,151)));
+
+        pref = this.getActivity().getSharedPreferences("lan",Context.MODE_PRIVATE);
+        if(pref.getString("lan","").equals("kor")){
+            make_firstbtn_title.setText(getString(R.string.make_firstbtn_title_kor));
+            make_firstbtn_weight.setText(getString(R.string.make_firstbtn_weight_kor));
+            make_firstbtn_concen.setText(getString(R.string.make_firstbtn_concen_kor));
+            make_firstbtn_volume.setText(getString(R.string.make_firstbtn_volume_kor));
+            make_firstbtn_amount.setText(getString(R.string.make_firstbtn_amount_kor));
+            make_firstbtn_sol_D.setText(getString(R.string.make_firstbtn_sol_D_kor));
+            make_firstbtn_sol_C.setText(getString(R.string.make_firstbtn_sol_C_kor));
+            make_firstbtn_sol_B.setText(getString(R.string.make_firstbtn_sol_B_kor));
+            make_firstbtn_sol.setText(getString(R.string.sol_kor));
+            del_btn.setText(getString(R.string.make_firstbtn_alldel_kor));
+            cal_btn.setText(getString(R.string.make_firstbtn_cal_kor));
+        } else{
+            //영어버전
+        }
 
         water_unit.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override

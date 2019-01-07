@@ -1,5 +1,7 @@
 package com.example.lenovo.bio_calculator.FunctionFragment;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -33,6 +35,8 @@ public class MakeFragment extends Fragment{
     @BindView(R.id.make_fourth_btn)
     Button fourth_btn;
 
+    SharedPreferences pref;
+
     public MakeFragment() {    }
 
 
@@ -45,6 +49,16 @@ public class MakeFragment extends Fragment{
 
         ActionBar actionBar = ((MainActivity) getActivity()).getSupportActionBar();
         actionBar.setBackgroundDrawable(new ColorDrawable(Color.rgb(47, 85, 151)));
+
+        pref = this.getActivity().getSharedPreferences("lan",Context.MODE_PRIVATE);
+        if(pref.getString("lan","").equals("kor")){
+            first_btn.setText(getString(R.string.make_fragment_firstbtn_text_kor));
+            second_btn.setText(getString(R.string.make_fragment_secondbtn_text_kor));
+            third_btn.setText(getString(R.string.make_fragment_thirdbtn_text_kor));
+            fourth_btn.setText(getString(R.string.make_fragment_fourthbtn_text_kor));
+        } else{
+            //영어버전
+        }
 
         first_btn.setOnClickListener(new View.OnClickListener() {
             @Override

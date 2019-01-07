@@ -7,5 +7,69 @@
     <string name="facebook_app_id">783845551957893</string>
     <string name="fb_login_protocol_scheme">fb783845551957893</string>
 
+    <!-- korean 버전 -->
+    <string name="main_login_text_kor">로그인</string>
+    <string name="main_password_text_kor">패스워드</string>
+    <string name="main_sign_text_kor">회원가입</string>
+    <string name="main_findlogin_text_kor">아이디 찾기 / 비밀번호찾기</string>
+    <string name="logout_kor">로그아웃</string>
+    <string name="share_kor">앱 공유</string>
+    <string name="about_kor">about</string>
+    <string name="input_kor">입력</string>
+    <string name="sol_kor">해설)</string>
+
+    <!--MainFragment 부분-->
+    <string name="main_fragment_make_text_kor">시약제조\n(Make)\n</string>
+    <string name="main_fragment_dil_text_kor">농도희석/변환\n(Dilution)\n</string>
+    <string name="main_fragment_mw_text_kor">분자량 계산기\n(M.W cal)\n</string>
+    <string name="main_fragment_cell_text_kor">세포 배양\n(Cell culture)\n</string>
+    <string name="main_fragment_buffer_text_kor">버퍼조성\n(Buffer)\n</string>
+    <string name="main_fragment_pcr_text_kor">Real time PCR \nFold change 계산기 \n (ΔΔCt method) </string>
+    <string name="main_fragment_sds_text_kor">SDS-PAGE\nGel 계산기\n</string>
+    <string name="main_fragment_qa_text_kor">실험 \nQ &amp; A 게시판\n</string>
+
+    <!--Gel Fragment 부분 -->
+    <string name="gel_fragment_stacking_title_kor">Stacking gel (5% 고정)</string>
+    <string name="gel_fragment_stacking_concentration_kor">만들고자 하는 농도</string>
+    <string name="gel_fragment_stacking_makevolume_kor">만들고자 하는 용량</string>
+    <string name="gel_fragment_stacking_fur_kor">조성</string>
+    <string name="gel_fragment_stacking_volume_kor">용량(mL)</string>
+    <string name="gel_fragment_resolving_title_kor">Resolving gel Gel  (6~15% )</string>
+    <string name="gel_fragment_resolving_concentration_kor">만들고자 하는 농도(%)</string>
+    <string name="gel_fragment_resolving_makevolume_kor">만들고자 하는 용량(mL)</string>
+    <string name="gel_fragment_resolving_fur_kor">조성</string>
+    <string name="gel_fragment_resolving_volume_kor">용량(mL)</string>
+
+    <!--Make Fragment 부분-->
+    <string name="make_fragment_firstbtn_text_kor">물농도(M)용액 제조하기</string>
+    <string name="make_fragment_secondbtn_text_kor">%농도 용액 제조하기</string>
+    <string name="make_fragment_thirdbtn_text_kor">%농도 용액을 이용하여 물농도(M) 용액 제조</string>
+    <string name="make_fragment_fourthbtn_text_kor">물농도 (M)용액을 이용하여 %농도 용액 제조</string>
+
+    <!-- Make 첫번째 버튼 부분-->
+    <string name="make_firstbtn_title_kor">물농도(M) 용액 제조하기</string>
+    <string name="make_firstbtn_weight_kor">시약의 분자량</string>
+    <string name="make_firstbtn_concen_kor">원하는 물농도</string>
+    <string name="make_firstbtn_volume_kor">원하는 볼륨</string>
+    <string name="make_firstbtn_alldel_kor">모두삭제</string>
+    <string name="make_firstbtn_cal_kor">계산하기</string>
+    <string name="make_firstbtn_amount_kor">필요한 시약 량</string>
+    <string name="make_firstbtn_sol_D_kor"> 의 시약을 증류수를 이용하여 최종 볼륨이</string>
+    <string name="make_firstbtn_sol_C_kor"> 가 되도록 녹이면</string>
+    <string name="make_firstbtn_sol_B_kor"> 용액이 제조된다.</string>
+
+    <!--PCR Fragment 부분-->
+    <string name="pcr_title_kor">유전자 발현량 ΔΔCt 방법으로 계산하기 </string>
+    <string name="pcr_ct1_text_kor">실험군 (n=1)\n Ct 값</string>
+    <string name="pcr_ct2_text_kor">실험군 (n=2)\n Ct 값</string>
+    <string name="pcr_ct3_text_kor">실험군 (n=3)\n Ct 값</string>
+    <string name="pcr_target_text_kor">타겟 유전자 \nex) Collagen</string>
+    <string name="pcr_house_text_kor">Housekeeping\nEx) GAPDH</string>
+    <string name="pcr_alldel_kor">모두 삭제</string>
+    <string name="pcr_cal_kor">계산하기</string>
+    <string name="pcr_ctresult_kor">ΔΔCt 값</string>
+    <string name="pcr_foldchange_kor">Fold Change (2^-ΔΔCt)</string>
+    <string name="pcr_sol_a_kor">Control 군과 실험군의 타겟 유전자 발현량은 (</string>
+    <string name="pcr_sol_b_kor">) 배 차이가 난다.</string>
 
 </resources>

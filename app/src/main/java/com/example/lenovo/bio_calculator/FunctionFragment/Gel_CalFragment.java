@@ -1,5 +1,7 @@
 package com.example.lenovo.bio_calculator.FunctionFragment;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -21,50 +23,44 @@ import com.example.lenovo.bio_calculator.R;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import me.grantland.widget.AutofitTextView;
 
 import static android.content.Context.INPUT_METHOD_SERVICE;
 
 public class Gel_CalFragment extends Fragment {
 
-    @BindView(R.id.edit_b)
-    EditText edit_b;
-    @BindView(R.id.text_1)
-    TextView text_1;
-    @BindView(R.id.text_2)
-    TextView text_2;
-    @BindView(R.id.text_3)
-    TextView text_3;
-    @BindView(R.id.text_4)
-    TextView text_4;
-    @BindView(R.id.text_5)
-    TextView text_5;
-    @BindView(R.id.text_6)
-    TextView text_6;
+    @BindView(R.id.edit_b) EditText edit_b;
+    @BindView(R.id.text_1) TextView text_1;
+    @BindView(R.id.text_2) TextView text_2;
+    @BindView(R.id.text_3) TextView text_3;
+    @BindView(R.id.text_4) TextView text_4;
+    @BindView(R.id.text_5) TextView text_5;
+    @BindView(R.id.text_6) TextView text_6;
 
-    @BindView(R.id.gel_mainview)
-    LinearLayout gel_mainview;
+    @BindView(R.id.gel_mainview) LinearLayout gel_mainview;
 
-    @BindView(R.id.edit_A)
-    EditText edit_A;
-    @BindView(R.id.edit_P)
-    EditText edit_P;
+    @BindView(R.id.edit_A) EditText edit_A;
+    @BindView(R.id.edit_P) EditText edit_P;
 
-    @BindView(R.id.textview2_1)
-    TextView textview2_1;
-    @BindView(R.id.textview2_2)
-    TextView textview2_2;
-    @BindView(R.id.textview2_3)
-    TextView textview2_3;
-    @BindView(R.id.textview2_4)
-    TextView textview2_4;
-    @BindView(R.id.textview2_5)
-    TextView textview2_5;
-    @BindView(R.id.textview2_6)
-    TextView textview2_6;
+    @BindView(R.id.textview2_1) TextView textview2_1;
+    @BindView(R.id.textview2_2) TextView textview2_2;
+    @BindView(R.id.textview2_3) TextView textview2_3;
+    @BindView(R.id.textview2_4) TextView textview2_4;
+    @BindView(R.id.textview2_5) TextView textview2_5;
+    @BindView(R.id.textview2_6) TextView textview2_6;
 
-    public Gel_CalFragment() {
-        // Required empty public constructor
-    }
+    @BindView(R.id.gel_fragment_stacking_title) AutofitTextView gel_fragment_stacking_title;
+    @BindView(R.id.gel_fragment_stacking_concentration) TextView gel_fragment_stacking_concentration;
+    @BindView(R.id.gel_fragment_stacking_makevolume) TextView gel_fragment_stacking_makevolume;
+    @BindView(R.id.gel_fragment_stacking_fur) TextView gel_fragment_stacking_fur;
+    @BindView(R.id.gel_fragment_stacking_volume) TextView gel_fragment_stacking_volume;
+    @BindView(R.id.gel_fragment_resolving_title) AutofitTextView gel_fragment_resolving_title;
+    @BindView(R.id.gel_fragment_resolving_concentration) TextView gel_fragment_resolving_concentration;
+    @BindView(R.id.gel_fragment_resolving_makevolume) TextView gel_fragment_resolving_makevolume;
+    @BindView(R.id.gel_fragment_resolving_fur) TextView gel_fragment_resolving_fur;
+    @BindView(R.id.gel_fragment_resolving_volume) TextView gel_fragment_resolving_volume;
+
+    public Gel_CalFragment() {   }
 
     double value1;
     double value2;
@@ -74,6 +70,7 @@ public class Gel_CalFragment extends Fragment {
     double value6;
 
     double value2_1, value2_2, value2_3, value2_4, value2_5, value2_6;
+    SharedPreferences pref;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -84,6 +81,23 @@ public class Gel_CalFragment extends Fragment {
 
         ActionBar actionBar = ((MainActivity) getActivity()).getSupportActionBar();
         actionBar.setBackgroundDrawable(new ColorDrawable(Color.rgb(47, 85, 151)));
+
+        pref = this.getActivity().getSharedPreferences("lan",Context.MODE_PRIVATE);
+        if(pref.getString("lan","").equals("kor")){
+            gel_fragment_stacking_title.setText(getString(R.string.gel_fragment_stacking_title_kor));
+            gel_fragment_stacking_concentration.setText(getString(R.string.gel_fragment_stacking_concentration_kor));
+            gel_fragment_stacking_makevolume.setText(getString(R.string.gel_fragment_stacking_makevolume_kor));
+            gel_fragment_stacking_fur.setText(getString(R.string.gel_fragment_stacking_fur_kor));
+            gel_fragment_stacking_volume.setText(getString(R.string.gel_fragment_stacking_volume_kor));
+            gel_fragment_resolving_title.setText(getString(R.string.gel_fragment_resolving_title_kor));
+            gel_fragment_resolving_concentration.setText(getString(R.string.gel_fragment_resolving_concentration_kor));
+            gel_fragment_resolving_makevolume.setText(getString(R.string.gel_fragment_resolving_makevolume_kor));
+            gel_fragment_resolving_fur.setText(getString(R.string.gel_fragment_resolving_fur_kor));
+            gel_fragment_resolving_volume.setText(getString(R.string.gel_fragment_resolving_volume_kor));
+            edit_b.setHint(getString(R.string.input_kor)); edit_A.setHint(getString(R.string.input_kor)); edit_P.setHint(getString(R.string.input_kor));
+        }else {
+            //영어버전
+        }
 
         edit_b.addTextChangedListener(new TextWatcher() {
             @Override

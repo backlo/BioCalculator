@@ -19,8 +19,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_margin="5dp"
-            android:background="@color/colorMakeButton"
-            android:text="물농도(M)용액 제조하기" />
+            android:background="@color/colorMakeButton" />
 
         <Button
             android:id="@+id/make_second_btn"
@@ -28,8 +27,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_margin="5dp"
-            android:background="@color/colorMakeButton"
-            android:text="%농도 용액 제조하기" />
+            android:background="@color/colorMakeButton" />
 
         <Button
             android:id="@+id/make_third_btn"
@@ -37,8 +35,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_margin="5dp"
-            android:background="@color/colorMakeButton"
-            android:text="%농도 용액을 이용하여 물농도(M) 용액 제조" />
+            android:background="@color/colorMakeButton" />
 
         <Button
             android:id="@+id/make_fourth_btn"
@@ -46,8 +43,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_margin="5dp"
-            android:background="@color/colorMakeButton"
-            android:text="물농도 (M)용액을 이용하여 %농도 용액 제조" />
+            android:background="@color/colorMakeButton"/>
     </LinearLayout>
 
 </FrameLayout>

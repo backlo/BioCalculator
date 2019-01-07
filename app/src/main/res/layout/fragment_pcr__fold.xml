@@ -22,11 +22,11 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/pcr_title"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:text="유전자 발현량 ΔΔCt 방법으로 계산하기 "
                 android:textColor="#000000"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -63,34 +63,34 @@
                         android:textSize="12sp" />
 
                     <TextView
+                        android:id="@+id/pcr_1ct1_text"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_marginRight="1dp"
                         android:layout_weight="2"
                         android:background="#a3c2e3"
                         android:gravity="center"
-                        android:text="실험군 (n=1)\n Ct 값"
                         android:textColor="#000000"
                         android:textSize="11sp" />
 
                     <TextView
+                        android:id="@+id/pcr_1ct2_text"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_marginRight="1dp"
                         android:layout_weight="2"
                         android:background="#a3c2e3"
                         android:gravity="center"
-                        android:text="실험군 (n=2)\nCt 값"
                         android:textColor="#000000"
                         android:textSize="11sp" />
 
                     <TextView
+                        android:id="@+id/pcr_1ct3_text"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="2"
                         android:background="#a3c2e3"
                         android:gravity="center"
-                        android:text="실험군 (n=3)\nCt 값"
                         android:textColor="#000000"
                         android:textSize="11sp" />
                 </TableRow>
@@ -103,6 +103,7 @@
                     android:padding="1dp">
 
                     <me.grantland.widget.AutofitTextView
+                        android:id="@+id/pcr_1target_text"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_marginRight="1dp"
@@ -110,7 +111,6 @@
                         android:background="#e1ebf6"
                         android:gravity="center"
                         android:maxLines="2"
-                        android:text="타겟 유전자 \nex) Collagen"
                         android:textColor="#000000" />
 
                     <EditText
@@ -122,7 +122,6 @@
                         android:background="#e1ebf6"
                         android:digits="0123456789."
                         android:gravity="center"
-                        android:hint="입력"
                         android:inputType="numberDecimal"
                         android:textColor="#000000"
                         android:textSize="12sp" />
@@ -136,7 +135,6 @@
                         android:background="#e1ebf6"
                         android:digits="0123456789."
                         android:gravity="center"
-                        android:hint="입력"
                         android:inputType="numberDecimal"
                         android:textColor="#000000"
                         android:textSize="12sp" />
@@ -150,7 +148,6 @@
                         android:background="#e1ebf6"
                         android:digits="0123456789."
                         android:gravity="center"
-                        android:hint="입력"
                         android:inputType="numberDecimal"
                         android:textColor="#000000"
                         android:textSize="12sp" />
@@ -164,6 +161,7 @@
                     android:padding="1dp">
 
                     <me.grantland.widget.AutofitTextView
+                        android:id="@+id/pcr_1house_text"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_marginRight="1dp"
@@ -171,7 +169,6 @@
                         android:background="#ffffff"
                         android:gravity="center"
                         android:maxLines="2"
-                        android:text="Housekeeping\nEx) GAPDH"
                         android:textColor="#000000" />
 
                     <EditText
@@ -183,7 +180,6 @@
                         android:background="#ffffff"
                         android:digits="0123456789"
                         android:gravity="center"
-                        android:hint="입력"
                         android:inputType="numberDecimal"
                         android:textColor="#000000"
                         android:textSize="12sp" />
@@ -197,7 +193,6 @@
                         android:background="#ffffff"
                         android:digits="0123456789"
                         android:gravity="center"
-                        android:hint="입력"
                         android:inputType="numberDecimal"
                         android:textColor="#000000"
                         android:textSize="12sp" />
@@ -211,7 +206,6 @@
                         android:background="#ffffff"
                         android:digits="0123456789"
                         android:gravity="center"
-                        android:hint="입력"
                         android:inputType="numberDecimal"
                         android:textColor="#000000"
                         android:textSize="12sp" />
@@ -251,34 +245,34 @@
                         android:textSize="12sp" />
 
                     <TextView
+                        android:id="@+id/pcr_2ct1_text"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_marginRight="1dp"
                         android:layout_weight="2"
                         android:background="#f1ccb1"
                         android:gravity="center"
-                        android:text="실험군 (n=1)\n Ct 값"
                         android:textColor="#000000"
                         android:textSize="11sp" />
 
                     <TextView
+                        android:id="@+id/pcr_2ct2_text"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_marginRight="1dp"
                         android:layout_weight="2"
                         android:background="#f1ccb1"
                         android:gravity="center"
-                        android:text="실험군 (n=2)\nCt 값"
                         android:textColor="#000000"
                         android:textSize="11sp" />
 
                     <TextView
+                        android:id="@+id/pcr_2ct3_text"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="2"
                         android:background="#f1ccb1"
                         android:gravity="center"
-                        android:text="실험군 (n=3)\nCt 값"
                         android:textColor="#000000"
                         android:textSize="11sp" />
                 </TableRow>
@@ -291,6 +285,7 @@
                     android:padding="1dp">
 
                     <me.grantland.widget.AutofitTextView
+                        android:id="@+id/pcr_2target_text"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_marginRight="1dp"
@@ -298,7 +293,6 @@
                         android:background="#f8e6d9"
                         android:gravity="center"
                         android:maxLines="2"
-                        android:text="타겟 유전자 \nex) Collagen"
                         android:textColor="#000000" />
 
                     <EditText
@@ -310,7 +304,6 @@
                         android:background="#f8e6d9"
                         android:digits="0123456789."
                         android:gravity="center"
-                        android:hint="입력"
                         android:inputType="numberDecimal"
                         android:textColor="#000000"
                         android:textSize="12sp" />
@@ -324,7 +317,6 @@
                         android:background="#f8e6d9"
                         android:digits="0123456789."
                         android:gravity="center"
-                        android:hint="입력"
                         android:inputType="numberDecimal"
                         android:textColor="#000000"
                         android:textSize="12sp" />
@@ -338,7 +330,6 @@
                         android:background="#f8e6d9"
                         android:digits="0123456789."
                         android:gravity="center"
-                        android:hint="입력"
                         android:inputType="numberDecimal"
                         android:textColor="#000000"
                         android:textSize="12sp" />
@@ -353,6 +344,7 @@
                     android:padding="1dp">
 
                     <me.grantland.widget.AutofitTextView
+                        android:id="@+id/pcr_2house_text"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_marginRight="1dp"
@@ -360,7 +352,6 @@
                         android:background="#ffffff"
                         android:gravity="center"
                         android:maxLines="2"
-                        android:text="Housekeeping\nEx) GAPDH"
                         android:textColor="#000000" />
 
                     <EditText
@@ -372,7 +363,6 @@
                         android:background="#ffffff"
                         android:digits="0123456789."
                         android:gravity="center"
-                        android:hint="입력"
                         android:inputType="numberDecimal"
                         android:textColor="#000000"
                         android:textSize="12sp" />
@@ -386,7 +376,6 @@
                         android:background="#ffffff"
                         android:digits="0123456789."
                         android:gravity="center"
-                        android:hint="입력"
                         android:inputType="numberDecimal"
                         android:textColor="#000000"
                         android:textSize="12sp" />
@@ -400,7 +389,6 @@
                         android:background="#ffffff"
                         android:digits="0123456789."
                         android:gravity="center"
-                        android:hint="입력"
                         android:inputType="numberDecimal"
                         android:textColor="#000000"
                         android:textSize="12sp"/>
@@ -421,8 +409,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:layout_weight="1"
-                android:background="@drawable/btn_custom"
-                android:text="모두 삭제" />
+                android:background="@drawable/btn_custom" />
 
             <Button
                 android:id="@+id/cal_btn"
@@ -430,8 +417,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:layout_weight="2"
-                android:background="@drawable/btn_custom"
-                android:text="계산하기" />
+                android:background="@drawable/btn_custom" />
         </LinearLayout>
 
         <LinearLayout
@@ -453,6 +439,7 @@
                     android:padding="1dp">
 
                     <me.grantland.widget.AutofitTextView
+                        android:id="@+id/pcr_ctresult"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_marginRight="1dp"
@@ -460,17 +447,16 @@
                         android:background="#4b73be"
                         android:gravity="center"
                         android:maxLines="2"
-                        android:text="ΔΔCt 값"
                         android:textColor="#ffffff" />
 
                     <TextView
+                        android:id="@+id/pcr_foldchange"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_marginRight="1dp"
                         android:layout_weight="2"
                         android:background="#4b73be"
                         android:gravity="center"
-                        android:text="Fold Change (2^-ΔΔCt)"
                         android:textColor="#ffffff"
                         android:textSize="12sp" />
 
@@ -518,9 +504,9 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/pcr_sol"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="해설)"
                 android:textColor="#000000"
                 android:textSize="14sp" />
 

@@ -9,13 +9,13 @@
         app:showAsAction="always" />
 
     <item android:id="@+id/action_logout"
-        android:title="로그아웃"
+        android:title="@string/logout_kor"
         app:showAsAction="never"/>
     <item android:id="@+id/action_share"
-        android:title="앱 공유"
+        android:title="@string/share_kor"
         app:showAsAction="never"/>
     <item android:id="@+id/action_about"
-        android:title="about"
+        android:title="@string/about_kor"
         app:showAsAction="never"/>
 
 </menu>

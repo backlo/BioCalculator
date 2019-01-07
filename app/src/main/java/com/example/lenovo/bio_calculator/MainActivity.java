@@ -1,6 +1,7 @@
 package com.example.lenovo.bio_calculator;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -19,7 +20,6 @@ import android.widget.Toast;
 
 import com.example.lenovo.bio_calculator.FunctionFragment.MainFragment;
 import com.example.lenovo.bio_calculator.UserFragment.LoginFragment;
-import com.example.lenovo.bio_calculator.UserFragment.SignFragment;
 import com.facebook.CallbackManager;
 import com.kakao.auth.Session;
 import com.kakao.network.ErrorResult;
@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity implements LoginFragment.Kak
     TextView login_userinfo;
 
     String usernickName;
+    SharedPreferences pref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +54,13 @@ public class MainActivity extends AppCompatActivity implements LoginFragment.Kak
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().setStatusBarColor(Color.parseColor("#f2f2f2"));
+        }
+
+        pref = getSharedPreferences("lan",MODE_PRIVATE);
+
+        if(pref.getString("lan","").equals("kor")){
+            login.setText(getString(R.string.main_login_text_kor));
+            loginSign.setText(getString(R.string.main_sign_text_kor));
         }
 
         getSupportFragmentManager().beginTransaction().add(R.id.main_fragment, new MainFragment()).commit();
@@ -68,9 +76,7 @@ public class MainActivity extends AppCompatActivity implements LoginFragment.Kak
         loginSign.setOnClickListener(new View.OnClickListener() {
 
             @Override
-            public void onClick(View v) {
-                replaceFragment(new SignFragment());
-            }
+            public void onClick(View v) { Toast.makeText(getApplicationContext(),"회원가입 탭",Toast.LENGTH_SHORT).show(); }
         });
     }
 
@@ -88,8 +94,14 @@ public class MainActivity extends AppCompatActivity implements LoginFragment.Kak
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu, menu);
-        return true;
+        pref = getSharedPreferences("lan", MODE_PRIVATE);
+        if(pref.getString("lan","").equals("kor")){
+            getMenuInflater().inflate(R.menu.menu, menu);
+            return true;
+        } else{
+            // 영문
+            return true;
+        }
     }
 
     @Override
@@ -136,6 +148,7 @@ public class MainActivity extends AppCompatActivity implements LoginFragment.Kak
             UserManagement.requestMe(new MeResponseCallback() {
                 @Override
                 public void onSessionClosed(ErrorResult errorResult) {
+                    Log.e("kakao", "실패");
                 }
 
                 @Override
@@ -144,6 +157,7 @@ public class MainActivity extends AppCompatActivity implements LoginFragment.Kak
 
                 @Override
                 public void onSuccess(UserProfile result) {
+                    Log.e("kakao", result.getNickname() + "님 환영합니다.");
                     login_userinfo.setText(result.getNickname() + "님 환영합니다.");
                 }
             });
@@ -170,5 +184,13 @@ public class MainActivity extends AppCompatActivity implements LoginFragment.Kak
         };
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        pref = getSharedPreferences("lan", MODE_PRIVATE);
+        SharedPreferences.Editor editor = pref.edit();
+        editor.remove("lan");
+        editor.commit();
+    }
 
 }

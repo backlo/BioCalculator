@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -14,13 +14,13 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="match_parent"
             android:layout_margin="3dp"
             android:layout_weight="1">
 
             <TableLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="400dp"
                 android:stretchColumns="*">
 
                 <TableRow
@@ -31,11 +31,11 @@
                     android:padding="1dp">
 
                     <me.grantland.widget.AutofitTextView
+                        android:id="@+id/gel_fragment_stacking_title"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="#3f552a"
                         android:gravity="center"
-                        android:text="Stacking gel (5% 고정)"
                         android:textColor="#ffffff" />
 
                 </TableRow>
@@ -48,13 +48,13 @@
                     android:padding="1dp">
 
                     <TextView
+                        android:id="@+id/gel_fragment_stacking_concentration"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_marginRight="1dp"
                         android:layout_weight="6"
                         android:background="#cadeb8"
                         android:gravity="center_vertical"
-                        android:text="만들고자 하는 농도"
                         android:textColor="#000000"
                         android:textSize="12sp" />
 
@@ -91,13 +91,13 @@
                     android:padding="1dp">
 
                     <TextView
+                        android:id="@+id/gel_fragment_stacking_makevolume"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_marginRight="1dp"
                         android:layout_weight="6"
                         android:background="#cadeb8"
                         android:gravity="center_vertical"
-                        android:text="만들고자 하는 용량"
                         android:textColor="#000000"
                         android:textSize="12sp" />
 
@@ -109,7 +109,6 @@
                         android:layout_weight="1.5"
                         android:background="#cadeb8"
                         android:gravity="right|center"
-                        android:hint="입력"
                         android:inputType="numberDecimal"
                         android:textColor="#000000"
                         android:textSize="12sp"
@@ -135,24 +134,24 @@
                     android:padding="1dp">
 
                     <TextView
+                        android:id="@+id/gel_fragment_stacking_fur"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_marginRight="1dp"
                         android:layout_weight="3.57"
                         android:background="#d0cecf"
                         android:gravity="center_vertical"
-                        android:text="조성"
                         android:textColor="#000000"
                         android:textSize="12sp" />
 
                     <TextView
+                        android:id="@+id/gel_fragment_stacking_volume"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_marginRight="1dp"
                         android:layout_weight="1.5"
                         android:background="#d0cecf"
                         android:gravity="left|center"
-                        android:text="용량(mL)"
                         android:textColor="#000000"
                         android:textSize="12sp" />
 
@@ -358,13 +357,13 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="match_parent"
             android:layout_margin="3dp"
             android:layout_weight="1">
 
             <TableLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="400dp"
                 android:stretchColumns="*">
 
                 <TableRow
@@ -375,11 +374,11 @@
                     android:padding="1dp">
 
                     <me.grantland.widget.AutofitTextView
+                        android:id="@+id/gel_fragment_resolving_title"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="#7c3f1a"
                         android:gravity="center"
-                        android:text="Resolving gel Gel  (6~15% )"
                         android:textColor="#ffffff" />
 
                 </TableRow>
@@ -392,25 +391,24 @@
                     android:padding="1dp">
 
                     <TextView
+                        android:id="@+id/gel_fragment_resolving_concentration"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_marginRight="1dp"
                         android:layout_weight="6"
                         android:background="#f2cab0"
                         android:gravity="center_vertical"
-                        android:text="만들고자 하는 농도(%)"
                         android:textColor="#000000"
                         android:textSize="12sp" />
 
                     <EditText
                         android:id="@+id/edit_P"
                         android:layout_width="0dp"
-                        android:layout_height="25dp"
+                        android:layout_height="match_parent"
                         android:layout_marginRight="1dp"
                         android:layout_weight="1.5"
                         android:background="#f2cab0"
                         android:gravity="right|center"
-                        android:hint="입력"
                         android:inputType="numberDecimal"
                         android:textColor="#d90b0b"
                         android:textSize="12sp" />
@@ -435,13 +433,13 @@
                     android:padding="1dp">
 
                     <TextView
+                        android:id="@+id/gel_fragment_resolving_makevolume"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_marginRight="1dp"
                         android:layout_weight="6"
                         android:background="#f2cab0"
                         android:gravity="center_vertical"
-                        android:text="만들고자 하는 용량(mL)"
                         android:textColor="#000000"
                         android:textSize="12sp" />
 
@@ -454,7 +452,6 @@
                         android:background="#f2cab0"
                         android:gravity="right|center"
                         android:inputType="numberDecimal"
-                        android:hint="입력"
                         android:textColor="#c70c0c"
                         android:textSize="12sp"/>
 
@@ -478,24 +475,24 @@
                     android:padding="1dp">
 
                     <TextView
+                        android:id="@+id/gel_fragment_resolving_fur"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_marginRight="1dp"
                         android:layout_weight="3.57"
                         android:background="#d0cecf"
                         android:gravity="center_vertical"
-                        android:text="조성"
                         android:textColor="#000000"
                         android:textSize="12sp" />
 
                     <TextView
+                        android:id="@+id/gel_fragment_resolving_volume"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_marginRight="1dp"
                         android:layout_weight="1.5"
                         android:background="#d0cecf"
                         android:gravity="left|center"
-                        android:text="용량(mL)"
                         android:textColor="#000000"
                         android:textSize="12sp" />
 
@@ -689,4 +686,4 @@
             </TableLayout>
         </LinearLayout>
     </LinearLayout>
-</FrameLayout>
+</ScrollView>
