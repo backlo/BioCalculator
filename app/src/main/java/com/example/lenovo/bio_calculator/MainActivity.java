@@ -2,6 +2,9 @@ package com.example.lenovo.bio_calculator;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.Signature;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -10,6 +13,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Base64;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -27,6 +31,13 @@ import com.kakao.usermgmt.UserManagement;
 import com.kakao.usermgmt.callback.LogoutResponseCallback;
 import com.kakao.usermgmt.callback.MeResponseCallback;
 import com.kakao.usermgmt.response.model.UserProfile;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -47,6 +58,11 @@ public class MainActivity extends AppCompatActivity implements LoginFragment.Kak
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        try {
+            EventBus.getDefault().register(this);
+        } catch (Exception e) { }
+
         ButterKnife.bind(this);
 
         View view = getWindow().getDecorView();
@@ -56,6 +72,7 @@ public class MainActivity extends AppCompatActivity implements LoginFragment.Kak
             getWindow().setStatusBarColor(Color.parseColor("#f2f2f2"));
         }
 
+        kakaoLoginChecker();
         pref = getSharedPreferences("lan",MODE_PRIVATE);
 
         if(pref.getString("lan","").equals("kor")){
@@ -63,8 +80,7 @@ public class MainActivity extends AppCompatActivity implements LoginFragment.Kak
             loginSign.setText(getString(R.string.main_sign_text_kor));
         }
 
-        getSupportFragmentManager().beginTransaction().add(R.id.main_fragment, new MainFragment()).commit();
-        kakaoLoginChecker();
+        getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment, new MainFragment()).commit();
 
         login.setOnClickListener(new View.OnClickListener() {
 
@@ -78,12 +94,16 @@ public class MainActivity extends AppCompatActivity implements LoginFragment.Kak
             @Override
             public void onClick(View v) { Toast.makeText(getApplicationContext(),"회원가입 탭",Toast.LENGTH_SHORT).show(); }
         });
+
     }
 
     private void replaceFragment(Fragment fragment){
+        String fragmentTag = fragment.getClass().getSimpleName();
+        getSupportFragmentManager().popBackStack(fragmentTag, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.main_fragment, fragment).addToBackStack(null).commit();
+        fragmentTransaction.replace(R.id.main_fragment, fragment).addToBackStack(fragmentTag).commit();
     }
 
 
@@ -137,9 +157,28 @@ public class MainActivity extends AppCompatActivity implements LoginFragment.Kak
         UserManagement.requestLogout(new LogoutResponseCallback() {
             @Override
             public void onCompleteLogout() {
-                login_userinfo.setText("로그인을 해주세요");
+                EventBus.getDefault().post(new Event(1));
             }
         });
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void kakaoLoginEvent(Event event) {
+        if(event.data == 1){
+            login_userinfo.setText("");
+            login.setVisibility(View.VISIBLE);
+            loginSign.setVisibility(View.VISIBLE);
+        } else if(event.data == 2){
+            login.setVisibility(View.GONE);
+            loginSign.setVisibility(View.GONE);
+            pref = getSharedPreferences("lan", MODE_PRIVATE);
+            if(pref.getString("lan","").equals("kor")) {
+                login_userinfo.setText(event.nickname + "님 환영합니다.");
+            } else{
+                //영문
+            }
+            getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment, new MainFragment()).commit();
+        }
     }
 
     public void kakaoLoginChecker() {
@@ -157,8 +196,14 @@ public class MainActivity extends AppCompatActivity implements LoginFragment.Kak
 
                 @Override
                 public void onSuccess(UserProfile result) {
-                    Log.e("kakao", result.getNickname() + "님 환영합니다.");
-                    login_userinfo.setText(result.getNickname() + "님 환영합니다.");
+                    pref = getSharedPreferences("lan", MODE_PRIVATE);
+                    if(pref.getString("lan","").equals("kor")) {
+                        login_userinfo.setText(result.getNickname() + "님 환영합니다.");
+                    } else{
+                        //영문
+                    }
+                    login.setVisibility(View.GONE);
+                    loginSign.setVisibility(View.GONE);
                 }
             });
         } else {
@@ -168,9 +213,13 @@ public class MainActivity extends AppCompatActivity implements LoginFragment.Kak
 
     @Override
     public void userNickname(String userNickname) {
-        Log.d("kakao listener", "" + userNickname);
         usernickName = userNickname;
-        login_userinfo.setText(usernickName + "님 환영합니다.");
+        pref = getSharedPreferences("lan", MODE_PRIVATE);
+        if(pref.getString("lan","").equals("kor")) {
+            login_userinfo.setText(usernickName + "님 환영합니다.");
+        } else{
+            //영문
+        }
     }
 
 
@@ -187,6 +236,9 @@ public class MainActivity extends AppCompatActivity implements LoginFragment.Kak
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        try {
+            EventBus.getDefault().unregister(this);
+        } catch (Exception e) {        }
         pref = getSharedPreferences("lan", MODE_PRIVATE);
         SharedPreferences.Editor editor = pref.edit();
         editor.remove("lan");

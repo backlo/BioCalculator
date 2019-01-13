@@ -44,6 +44,7 @@ public class SplashActivity extends AppCompatActivity {
                 editor.putString("lan","kor");
                 editor.commit();
                 startActivity(i);
+                finish();
             }
         });
 

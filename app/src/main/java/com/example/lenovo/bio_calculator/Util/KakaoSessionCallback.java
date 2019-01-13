@@ -2,6 +2,7 @@ package com.example.lenovo.bio_calculator.Util;
 
 import android.util.Log;
 
+import com.example.lenovo.bio_calculator.Event;
 import com.kakao.auth.ErrorCode;
 import com.kakao.auth.ISessionCallback;
 import com.kakao.network.ErrorResult;
@@ -9,6 +10,8 @@ import com.kakao.usermgmt.UserManagement;
 import com.kakao.usermgmt.callback.MeResponseCallback;
 import com.kakao.usermgmt.response.model.UserProfile;
 import com.kakao.util.exception.KakaoException;
+
+import org.greenrobot.eventbus.EventBus;
 
 public class KakaoSessionCallback implements ISessionCallback {
 
@@ -42,6 +45,7 @@ public class KakaoSessionCallback implements ISessionCallback {
             public void onSuccess(UserProfile userProfile) {
                 Log.e("kakao at session", userProfile.toString());
                 Log.e("kakao at session", userProfile.getId() + "");
+                EventBus.getDefault().post(new Event(2,userProfile.getNickname()));
             }
         });
 
@@ -50,6 +54,7 @@ public class KakaoSessionCallback implements ISessionCallback {
     // 세션 실패시
     @Override
     public void onSessionOpenFailed(KakaoException exception) {
+        Log.e("kakao at session","session open failed");
     }
 }
 
