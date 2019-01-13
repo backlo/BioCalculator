@@ -59,6 +59,21 @@ public class MainActivity extends AppCompatActivity implements LoginFragment.Kak
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //키값 알아내는법
+        /*try{
+            PackageInfo info = getPackageManager().getPackageInfo("com.example.lenovo.bio_calculator",PackageManager.GET_SIGNATURES);
+            for(Signature signature : info.signatures){
+                MessageDigest md = MessageDigest.getInstance("SHA");
+                md.update(signature.toByteArray());
+                Log.e("KeyHash: ", Base64.encodeToString(md.digest(), Base64.DEFAULT));
+            }
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }*/
+
+        //이벤트버스
         try {
             EventBus.getDefault().register(this);
         } catch (Exception e) { }
