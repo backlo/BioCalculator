@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity implements LoginFragment.Kak
             e.printStackTrace();
         }*/
 
-        //이벤트버스
+        //이벤트버스 받는부분
         try {
             EventBus.getDefault().register(this);
         } catch (Exception e) { }
